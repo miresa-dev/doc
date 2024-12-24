@@ -23,7 +23,7 @@ Log in.
 #### Payload
 
 * `id`: The ID of the account to log in to.
-* `pw`: The password of the account to log in to.
+* `password`: The password of the account to log in to.
 
 #### Response
 
@@ -57,17 +57,58 @@ The server may respond with...
 
 Create a new user.
 
-### GET `/u`
+#### Payload
 
-Get all users.
+* `username`: The display name of the user
+* `password`: The password for the new user (will be hashed before storing)
+
+#### Response
+
+* `username`: The display name of the user
+* `id`: The user's ID.
+* `created`: The time the user was registered
+* `about`: A short description of the user (empty until set by user)
+
+The server may respond with...
+
+* `201 Created` if the user creation was successful
+* `400 Bad Request` if a field is missing
+* `409 Conflict` if a user with that account name exists
+* `500 Internal Server Error` if the server encountered an error.
 
 ### GET `/u/{id}`
 
 Get a user by their ID.
 
+#### Payload
+
+None.
+
+#### Response
+
+* `username`: The display name of the user
+* `id`: The user's ID
+* `created`: The time the user registered
+* `about`: The user's biography
+
+### GET `/u`
+
+Get all users.
+
+#### Response
+
+The same as `/u/{id}`, except as a list.
+
 ### GET `/u/{name}?getId=true`
 
 Returns the ID for a username.
+
+#### Response
+
+* `id`: The ID for the username
+
+The server may response with, apart from `200` and `500`, `404 Not Found` if
+the username does not exist.
 
 ### PATCH `/u/{id}`
 
@@ -108,6 +149,8 @@ The `limit` parameter must be higher than 0 but lower than 128.
 ## Miscellaneous
 
 There are easter eggs hidden in the official server. See if you can find them!
+
+<small>Hint: check the code.</small>
 
 ### GET `/v`
 

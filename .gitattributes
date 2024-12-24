@@ -53,6 +53,7 @@
 .gitignore export-ignore
 .gitkeep export-ignore
 *.md linguist-detectable
+doc/**.md linguist-detectable
 * text=auto
 *.bash text eol=lf
 *.bat text eol=crlf
