@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Miresa documentation",
   description: "The official documentation for Miresa",
+  base: "/doc/",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
