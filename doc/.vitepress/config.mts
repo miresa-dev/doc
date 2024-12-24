@@ -17,9 +17,18 @@ export default defineConfig({
       {
         text: 'API',
         collapsed: true,
+        link: '/api/starting',
         items: [
           { text: 'Full reference', link: '/api/ref' },
           { text: 'Usage examples', link: '/api/examples' }
+        ]
+      },
+      {
+        text: 'Self Hosting',
+        collapsed: true,
+        link: '/selfhost/starting',
+        items: [
+          { text: 'Configuration', link: '/selfhost/config' }
         ]
       }
     ],

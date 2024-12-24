@@ -68,10 +68,15 @@ The server may respond with...
 
 Create a new user.
 
+Before `POST`ing to `/u`, get the data from `/init`. See Authorization section
+for information.
+
 #### Payload
 
 * `username`: The display name of the user
 * `password`: The password for the new user (will be hashed before storing)
+* `sid`: The session ID you got from `/init`
+* `captcha`: The solution to the captcha you got from `/init`
 
 #### Response
 
@@ -91,16 +96,13 @@ The server may respond with...
 
 Get a user by their ID.
 
-#### Payload
-
-None.
-
 #### Response
 
 * `username`: The display name of the user
 * `id`: The user's ID
 * `created`: The time the user registered
 * `about`: The user's biography
+* `items`: A list of the IDs of the items the user has created
 
 ### GET `/u`
 
@@ -135,9 +137,33 @@ the item they were replying to.
 
 Create a new item.
 
+#### Payload
+
+* `title`: The title of the item (only applicable for posts)
+* `content`: The content of the item
+* `parent`: The ID of the parent item (only applicable for comments)
+
+#### Response
+
+The server may respond with...
+
+* `201 Created` if the item was successfully made
+* `400 Bad Request` if the `content` field is missing, or the `parent` **and**
+  `title` fields are missing.
+* `404 Not Found` if the parent ID is invalid (empty is not invalid)
+* `500 Internal Server Error` if the server encountered an error.
+
 ### GET `/i/{id}`
 
 Get an item by ID.
+
+#### Response
+
+* `creator`: The ID of the user who made the item
+* `id`: The ID of the item
+* `parent`: The ID of the parent of the item (only applicable for comments)
+* `title`: The title of the item (only applicable for posts)
+* `children`: A list of IDs of comments replying to the item.
 
 ### PATCH `/i/{id}`
 
@@ -147,6 +173,14 @@ Update an item by ID. This can only be done by its creator.
 
 Delete an item by ID. This can only be done by its creator or an instance
 administrator.
+
+#### Response
+
+The server may respond with...
+
+* `204 No Content` if deletion was successful
+* `404 Not Found` if the item is not found
+* `500 Internal Server Error` if the server had an error.
 
 ### GET `/i?limit={limit}&offset={offset}&sort={sort}`
 
