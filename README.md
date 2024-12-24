@@ -1,3 +1,5 @@
+<img src="doc/public/assets/banner.svg" alt="Miresa banner image">
+
 # Miresa docs
 
 Welcome to the Miresa documentation!
