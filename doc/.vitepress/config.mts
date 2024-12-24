@@ -5,6 +5,7 @@ export default defineConfig({
   title: "Miresa documentation",
   description: "The official documentation for Miresa",
   base: "/doc/",
+  head: [['link', { rel: 'icon', href: '/assets/icon.png' }]]
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [

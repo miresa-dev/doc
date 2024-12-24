@@ -16,6 +16,15 @@ The base URL for the API is `https://YOUR_INSTANCE/api/vVERSION`, where
 
 ## Authentication
 
+### GET `/init`
+
+Get the initial data required to log in.
+
+#### Response
+
+* `captcha`: A simple question for a human to solve
+* `sid`: A session ID
+
 ### POST `/login`
 
 Log in.
@@ -24,6 +33,8 @@ Log in.
 
 * `id`: The ID of the account to log in to.
 * `password`: The password of the account to log in to.
+* `sid`: The session ID you got from `/init`
+* `captcha`: The solution to the captcha you got from `/init`
 
 #### Response
 
