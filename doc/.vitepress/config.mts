@@ -1,11 +1,10 @@
 import { defineConfig } from 'vitepress'
 
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Miresa documentation",
   description: "The official documentation for Miresa",
   base: "/doc/",
-  head: [['link', { rel: 'icon', href: '/assets/icon.png' }]],
+  head: [['link', { rel: 'icon', href: '/doc/favicon.ico' }]],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
