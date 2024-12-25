@@ -203,8 +203,14 @@ Returns information about the server and the operating system running it.
 
 #### Response
 
+> [!WARNING]
+> The server configuration allows for any or all of these fields to be hidden.
+> You may only get some of these fields, if any at all.
+
 * `os`: The operating system on which the server is running
 * `arch`: The arch (eg `x86-64`) on which the server is running
-* `goroutines`: The number of goroutines currently running <!--/sched/goroutines:goroutines-->
+* `go`: The version of Go the server is using
+* `goroutines`: The number of goroutines currently running
+* `time`: The time at the location where the server is
 
 The response is in valid JSON format.
